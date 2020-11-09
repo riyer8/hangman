@@ -1,16 +1,8 @@
-// Class HangmanMain is the driver program for the Hangman program.  It reads a
-// dictionary of words to be used during the game and then plays a game with
-// the user.  This is a cheating version of hangman that delays picking a word
-// to keep its options open.  You can change the setting for SHOW_COUNT to see
-// how many options are still left on each turn.
-
 import java.util.*;
 import java.io.*;
 
 public class HangmanMain 
 {
-	public static final boolean SHOW_COUNT = true; // show words left
-
 	public static void main(String[] args) throws FileNotFoundException {
 		System.out.println("Welcome to the hangman game.");
 		System.out.println();
@@ -42,16 +34,11 @@ public class HangmanMain
 		}
 	}
 
-	// Plays one game with the user
 	public static void playGame(Scanner kb, HangmanManager hangman) 
 	{
 		while (hangman.guessesLeft() > 0 && hangman.pattern().contains("-")) 
 		{
 			System.out.println("guesses : " + hangman.guessesLeft());
-			if (SHOW_COUNT) {
-				System.out.println(hangman.words().size() + " words left: "
-						+ hangman.words());
-			}
 			
 			System.out.println("guessed : " + hangman.guesses());
 			System.out.println("current : " + hangman.pattern());
@@ -75,7 +62,6 @@ public class HangmanMain
 		}
 	}
 
-	// reports the results of the game, including showing the answer
 	public static void showResults(HangmanManager hangman) {
 		// if the game is over, the answer is the first word in the list
 		// of words, so we use an iterator to get it
